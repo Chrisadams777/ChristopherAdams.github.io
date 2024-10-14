@@ -1,0 +1,62 @@
+/* Use Flexbox for mobile-first design */
+body {
+    font-family: 'Roboto', sans-serif;
+    color: #fff;
+    background-color: #121212;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #333;
+    padding: 20px;
+}
+
+.nav-list {
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+}
+
+.nav-list a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.hero {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #1e1e1e;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+}
+
+.hero .cta {
+    background-color: #007bff;
+    padding: 10px 20px;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.project-card {
+    background-color: #2a2a2a;
+    padding: 20px;
+    margin: 10px;
+    border-radius: 10px;
+}
+
+.project-card h3 {
+    font-size: 1.5rem;
+}
+
+footer {
+    background-color: #333;
+    text-align: center;
+    padding: 20px;
+}

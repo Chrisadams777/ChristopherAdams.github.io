@@ -1,20 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Personal portfolio website to showcase projects and skills.">
     <title>My Portfolio</title>
-    <!-- Fonts and Styles -->
+    <!-- Fonts and CSS -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
-    <!-- Three.js Library -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
-
 <body>
-    <!-- Header Section with Navigation -->
+    <!-- Navigation -->
     <header>
         <nav>
             <ul class="nav-list">
@@ -62,72 +58,10 @@
         <p>&copy; 2024 Your Name</p>
     </footer>
 
-    <!-- JavaScript for 3D Projects Showcase -->
-    <script>
-        // Basic Three.js setup
-        const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-        const renderer = new THREE.WebGLRenderer();
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        document.getElementById('3d-container').appendChild(renderer.domElement);
-
-        // Create and add rotating cube
-        const geometry = new THREE.BoxGeometry();
-        const material = new THREE.MeshStandardMaterial({ color: 0x0077ff });
-        const cube = new THREE.Mesh(geometry, material);
-        scene.add(cube);
-
-        // Camera positioning and lighting
-        camera.position.z = 5;
-        const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
-        const pointLight = new THREE.PointLight(0xffffff, 0.5);
-        pointLight.position.set(5, 5, 5);
-        scene.add(ambientLight, pointLight);
-
-        // Tooltip for displaying project info on hover
-        const tooltip = document.createElement('div');
-        tooltip.style.position = 'absolute';
-        tooltip.style.backgroundColor = '#333';
-        tooltip.style.color = '#fff';
-        tooltip.style.padding = '8px';
-        tooltip.style.borderRadius = '4px';
-        tooltip.style.display = 'none';
-        document.body.appendChild(tooltip);
-
-        // Raycaster and mouse coordinates
-        const raycaster = new THREE.Raycaster();
-        const mouse = new THREE.Vector2();
-
-        function onMouseMove(event) {
-            // Update mouse position
-            mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-            mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
-
-            // Raycasting to detect hover
-            raycaster.setFromCamera(mouse, camera);
-            const intersects = raycaster.intersectObjects([cube]);
-
-            if (intersects.length > 0) {
-                tooltip.style.display = 'block';
-                tooltip.style.left = `${event.clientX + 10}px`;
-                tooltip.style.top = `${event.clientY + 10}px`;
-                tooltip.innerHTML = `<strong>Project: Interactive Cube</strong><br>Tech Stack: Three.js`;
-            } else {
-                tooltip.style.display = 'none';
-            }
-        }
-
-        window.addEventListener('mousemove', onMouseMove);
-
-        // Animation loop
-        function animate() {
-            requestAnimationFrame(animate);
-            cube.rotation.x += 0.01;
-            cube.rotation.y += 0.01;
-            renderer.render(scene, camera);
-        }
-        animate();
-    </script>
+    <!-- JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="three-setup.js"></script>
+    <script src="interactivity.js"></script>
 </body>
-
 </html>
+
